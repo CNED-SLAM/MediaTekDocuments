@@ -88,7 +88,8 @@ namespace MediaTekDocuments.manager
                     return new JObject();
             }
             // récupération de l'information retournée par l'api
-            return httpResponse.Content.ReadAsAsync<JObject>().Result;
+            var json = httpResponse.Content.ReadAsStringAsync().Result; 
+            return JObject.Parse(json);
         }
 
     }
